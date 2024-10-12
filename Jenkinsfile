@@ -40,12 +40,12 @@ pipeline {
                 }
         stage ('5. Email Notification') {
             steps {
-               emailext body: '''Terraform eks deployment is completed.
-                    Let me know if the changes look okay.
-                    Thanks,
-                    Team-B,
-                    Dominion System Technologies,
-                    +44 77*******6''', recipientProviders: [buildUser()], subject: 'Build Status', to: 'alaneighty88@gmail.com'
+               mail bcc: 'alaneighty88@gmail.com', body: '''Terraform deployment is completed.
+               Let me know if the changes look okay.
+               Thanks,
+               Team-B
+               Dominion System Technologies,
+              +44 7*******''', cc: 'alaneighty88@gmail.com', from: '', replyTo: '', subject: 'Terraform Infra deployment completed!!!', to: 'alaneighty88@gmail.com'
                           
                }    
           }
