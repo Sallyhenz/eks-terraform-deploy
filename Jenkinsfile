@@ -45,7 +45,7 @@ pipeline {
                Thanks,
                Team-B
                Dominion System Technologies,
-              +44 7*******''', cc: 'alaneighty88@gmail.com', from: '', replyTo: '', subject: 'Terraform Infra deployment completed!!!', to: 'alaneighty88@gmail.com'
+              +44 7*******''', cc: 'sexysteeldave@gmail.com', from: '', replyTo: '', subject: 'Terraform Infra deployment completed!!!', to: 'steve4arsenal@yahoo.com'
                           
                }    
           }
