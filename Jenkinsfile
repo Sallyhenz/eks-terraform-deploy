@@ -4,7 +4,7 @@ pipeline {
                 choice(name: 'Deployment_Type', choices:['apply','destroy'],description:'The deployment type')
                   }
     environment {
-        EMAIL_TO = 'alaneighty88@gmail.com'
+        EMAIL_TO = 'sallyhenz@gmail.com'
     }
     stages {
         stage('1.Terraform init') {
@@ -16,7 +16,7 @@ pipeline {
         stage('2.Terraform plan') {
             steps {
                 echo 'terraform plan phase'
-                sh 'AWS_REGION=us-west-2 terraform plan'
+                sh 'AWS_REGION=us-west-1 terraform plan'
             }
         }
         stage('3.Manual Approval') {
@@ -34,13 +34,13 @@ pipeline {
         stage('4.Terraform Deploy') {              
             steps { 
                 echo 'Terraform ${params.Deployment_Type} phase'  
-                sh "AWS_REGION=us-west-2 terraform ${params.Deployment_Type} --auto-approve"
+                sh "AWS_REGION=us-west-1 terraform ${params.Deployment_Type} --auto-approve"
                 sh("""scripts/update-kubeconfig.sh""")                
             }
         }
         stage ('5. Email Notification') {
             steps {
-               mail bcc: 'alaneighty88@gmail.com', body: '''Terraform deployment is completed.
+               mail bcc: 'sallyhenz@gmail.com', body: '''Terraform deployment is completed.
                Let me know if the changes look okay.
                Thanks,
                Team-B
